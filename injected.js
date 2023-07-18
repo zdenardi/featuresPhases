@@ -18,9 +18,7 @@ $(async()=>{
 
     const divs = [firstDiv,secondDiv,thirdDiv,fourthDiv,fifthDiv]
 
-    const removeAllActives = ()=>{
-        $("#1,#2,#3,#4,#5").removeClass('active')
-    }
+
     let i = 0
     const cycleThroughDivs = async (i)=>{
         while(i <= 5){
