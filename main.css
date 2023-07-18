@@ -14,7 +14,7 @@
     padding:0;
 }
 .description p{
-    font-size: 14;
+    font-size: 14px;
 }
 .left-column{
     margin-left:80px;
@@ -30,7 +30,7 @@
 }
 .feature{
     border-left-style: dashed;
-    height: 80px;
+    height: 103px;
 }
 .right-column{
     margin-left:80px;
@@ -41,4 +41,14 @@
 }
 .active .description{
     display: block;
+}
+.call-to-action{
+    border-style: none;
+    width: 350px;
+    height: 77px;
+    color:white;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    background-image: linear-gradient(to right, #5E5E5E, #2C252D);
 }
