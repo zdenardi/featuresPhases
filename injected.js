@@ -8,8 +8,6 @@ $(async()=>{
      */
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
-
-    console.log("Injecting")
     const firstDiv = $('#1')
     const secondDiv = $('#2')
     const thirdDiv = $('#3')
@@ -20,34 +18,41 @@ $(async()=>{
 
 
     let i = 0
+
+
+    /**
+     *  Cycles through the divs in order to make them 'active'
+     * @param i
+     * @returns {Promise<void>}
+     */
     const cycleThroughDivs = async (i)=>{
-        while(i <= 5){
-            if (i===5){
-                console.log("done")
-                i=0
-            }else if(!freeze){
-                $(".active").removeClass('active')
-                divs[i].addClass('active')
+            while (i <= 5) {
+                if(freeze){
+                    break
+                }
+                if (i === divs.length) {
+                    i = 0
+                } else{
+                    $(".active").removeClass('active')
+                    divs[i].addClass('active')
+                    i++
+                }
                 await delay(5000)
-                i++
-            }else{
-                console.log("frozen")
-                break
             }
-        }
     }
 
     $("#1,#2,#3,#4,#5").on("mouseover",(div)=>{
         $('.active').removeClass('active')
         $(div.currentTarget).addClass('active')
+        $(div.currentTarget).addClass('freeze')
         freeze = true;
     })
     $("#1,#2,#3,#4,#5").on("mouseleave",async (div)=>{
+        i = div.currentTarget.id-1
+        await delay(6000)
         freeze = false
-        i = div.target.id
         await cycleThroughDivs(i)
     })
-    await cycleThroughDivs(i)
-
+        await cycleThroughDivs(i)
 })
 
